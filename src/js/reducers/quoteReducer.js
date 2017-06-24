@@ -1,6 +1,5 @@
 const initialState = {
-  text: '',
-  author: '',
+  quotes: [],
   busy: false
 }
 
@@ -10,8 +9,8 @@ export default function reducer(state = initialState, action) {
       return Object.assign({}, state, { busy: true })
     }
     case 'QUOTE_SUCCESS': {
-      const { text, author } = action.payload
-      return Object.assign({}, state, { text, author, busy: false })
+      const { quotes } = action.payload
+      return Object.assign({}, state, { quotes, busy: false })
     }
     case 'QUOTE_FAIL': {
       return initialState

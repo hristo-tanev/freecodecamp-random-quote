@@ -1,18 +1,18 @@
 import axios from 'axios'
 
-export const fetchQuoteRequest = () => ({ type: 'QUOTE_REQUEST' })
-export const fetchQuoteSuccess = (text, author) => ({ type: 'QUOTE_SUCCESS', payload: { text, author } })
-export const fetchQuoteFail = () => ({ type: 'QUOTE_FAIL' })
+export const fetchQuotesRequest = () => ({ type: 'QUOTE_REQUEST' })
+export const fetchQuotesSuccess = (quotes) => ({ type: 'QUOTE_SUCCESS', payload: { quotes } })
+export const fetchQuotesFail = () => ({ type: 'QUOTE_FAIL' })
 
-export function fetchQuote() {
+export function fetchQuotes() {
   return (dispatch) => {
-    dispatch(fetchQuoteRequest())
-    axios.get('http://quotesondesign.com/wp-json/posts?filter[orderby]=rand&filter[posts_per_page]=1')
+    dispatch(fetchQuotesRequest())
+    axios.get('http://quotesondesign.com/wp-json/posts?filter[orderby]=rand&filter[posts_per_page]=10')
          .then((response) => {
-           dispatch(fetchQuoteSuccess(response.data[0].content, response.data[0].title))
+           dispatch(fetchQuotesSuccess(response.data))
          })
          .catch((error) => {
-           dispatch(fetchQuoteFail())
+           dispatch(fetchQuotesFail())
          })
   }
 }

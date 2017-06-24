@@ -1,7 +1,8 @@
 import React from 'react'
 import { connect } from 'react-redux'
 
-import { fetchQuote } from '../actions/quoteActions'
+import { fetchQuotes } from '../actions/quoteActions'
+import { removePTags } from '../../utils/utils'
 
 @connect((store) => {
   return {
@@ -10,22 +11,37 @@ import { fetchQuote } from '../actions/quoteActions'
 })
 
 export default class Quote extends React.Component {
-  componentDidMount() {
-    this.props.dispatch(fetchQuote())
+  constructor(props) {
+    super(props)
+    this.state = {
+      quoteText: '',
+      quoteAuthor: ''
+    }
   }
 
-  getNewQuote() {
-    this.props.dispatch(fetchQuote())
+  componentDidMount() {
+    this.props.dispatch(fetchQuotes())
     setTimeout(() => {}, 1000)
   }
 
+  getNewQuote() {
+    const quoteNumber = Math.floor((Math.random() * 10))
+    const quote = this.props.quotes.quotes[quoteNumber]
+    this.setState({
+      quoteText: removePTags(quote.content),
+      quoteAuthor: quote.title
+    })
+  }
+
   render() {
-    const { text, author } = this.props.quotes
+    const { quoteText, quoteAuthor } = this.state
 
     return (
       <div>
-        <div>{text}</div>
-        <div>{author}</div>
+        <i class="fa fa-quote-left fa-3x"></i>
+        <span>{quoteText}</span>
+        <i class="fa fa-quote-right fa-3x"></i>
+        <div>{quoteAuthor}</div>
         <button type="button" class="btn btn-primary" onClick={this.getNewQuote.bind(this)}>New quote</button>
       </div>
     )
