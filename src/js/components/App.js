@@ -1,9 +1,13 @@
 import React from 'react'
 
+import Quote from './Quote'
+
 export default class App extends React.Component {
   render() {
     return (
-      <div>Hi there! It works!</div>
+      <div class="container">
+        <Quote />
+      </div>
     )
   }
 }
