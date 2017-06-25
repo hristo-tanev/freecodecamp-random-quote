@@ -37,12 +37,14 @@ export default class Quote extends React.Component {
     const { quoteText, quoteAuthor } = this.state
 
     return (
-      <div>
-        <i class="fa fa-quote-left fa-3x"></i>
-        <span>{quoteText}</span>
-        <i class="fa fa-quote-right fa-3x"></i>
-        <div>{quoteAuthor}</div>
-        <button type="button" class="btn btn-primary" onClick={this.getNewQuote.bind(this)}>New quote</button>
+      <div class="panel panel-default">
+        <div class="panel-body">
+          <i class="fa fa-quote-left fa-3x"></i>
+          <span>{quoteText}</span>
+          <i class="fa fa-quote-right fa-3x"></i>
+          <div>{quoteAuthor}</div>
+          <button type="button" class="btn btn-primary" onClick={this.getNewQuote.bind(this)}>New quote</button>
+        </div>
       </div>
     )
   }
