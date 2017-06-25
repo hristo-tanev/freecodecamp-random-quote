@@ -1,3 +1,3 @@
-export function removePTags(s) {
-  return s.replace('<p>', '').replace('</p>', '')
+export function removeTags(s, opening, closing) {
+  return s.replace(opening, '').replace(closing, '')
 }
