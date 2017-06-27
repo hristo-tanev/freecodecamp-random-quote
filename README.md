@@ -13,5 +13,10 @@ After all modules are installed to run the application execute the command below
 npm start
 ```
 
+# Description
+The functionality of the application requires it to fulfill the following two requirements:
+  1. The user should be able to generate a new quote.
+  1. The user should be able to tweet the quote.
+
 # License
-See the [LICENSE](https://github.com/hristo-tanev/freecodecamp-markdown-previewer/LICENSE.md) file for license rights and limitations (MIT).
+See the [LICENSE](https://github.com/hristo-tanev/freecodecamp-markdown-previewer/LICENSE) file for license rights and limitations (MIT).
